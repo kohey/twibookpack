@@ -1,0 +1,53 @@
+<!-- app/views/top/timeline.html.erb -->
+<div class="col-xs-3 container sidebar well well-sm">
+  
+  <%= @user.name %><br>
+  @<%= @user.screen_name %><br>
+  <div>
+    <span class="col-xs-4">
+      ツイート
+      <span><%= @user.tweets_count %></span>
+    </span>
+    <div class="col-xs-4">
+      フォロー
+      <span><%= @user.friends_count %></span>
+    </div>
+    <div class="col-xs-4">
+      フォロワー
+      <span><%= @user.followers_count %></span>
+    </div>
+  </div><br>
+  <%= @user.description %><br>
+  <%= @user.location %><br>
+  <%= @user.website %><br>
+  
+  <%= form_tag(home_analyze_path, method: "post") do%>
+    <%= submit_tag("分析する", class: "btn btn-primary")%>
+  <% end %>
+  <%= form_tag(tweet_path, method: "post") do %>
+    <%= text_field_tag :text, '', class: "form-control input-area" %>
+    <%= submit_tag("Tweet", class: "btn btn-primary") %>
+  <% end %>
+</div>
+<div class="col-xs-9 col-xs-offset-3">
+  <% @tweets.each do |tweet| %>
+    <div class="post-panel well well-sm">
+      <div class="tweet-image">
+        <%= link_to image_tag(tweet.user.profile_image_url_https) %>
+      </div>
+      <div class="post">
+        <%= tweet.user.name %> @<%= tweet.user.screen_name %><br />
+        <%= tweet.text %><br />
+        RT <%= tweet.retweet_count %> いいね <%= tweet.favorite_count %><br />
+        <%= tweet.created_at %><br />
+        <div class="post-image">
+          <% if tweet.media? %>
+            <% tweet.media.each do |media| %>
+              <%= image_tag(media.media_url_https) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

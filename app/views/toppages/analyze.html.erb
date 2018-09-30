@@ -1,0 +1,7 @@
+ここに検索結果
+<% @datas.each do |data|%>
+    <p><img src="<%= data[:thumbnail]%>" alt=""></p>
+    <p>タイトル:<%= data[:title]%></p>
+    <p>著者:<%= data[:authors]%></p>
+    <p>説明:<%= data[:description]%></p>
+<% end %>

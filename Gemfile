@@ -34,6 +34,19 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'twitter'
 
+
+gem 'mecab'
+gem 'mecab-noun_parser'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'settingslogic'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'honoka-rails'
+
+gem 'pry-byebug', group: :development
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
