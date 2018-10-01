@@ -37,17 +37,21 @@ class ToppagesController < ApplicationController
 
     @user_timeline.each do |timeline|
       p client.status(timeline.id).text
-      # str = str + client.status(timeline.id).text
       parser << client.status(timeline.id).text
     end
+    #parserにはtweetが配列で入る
+    p "***parserの中身***"
     p parser
-    # ここまで↑
+  
     nouns = parser.parse.nouns
+    p "***nounsの中身***"
+    p nouns
     @nouns = nouns.map { |noun| noun[:noun] }
-    p @nouns
+    
     
     @str = ''
     @nouns.each do |noun|
+      noun = noun.gsub(/(@.*|http.*)/,"")
       if @str == ''
         @str = @str + noun
       else
@@ -56,10 +60,8 @@ class ToppagesController < ApplicationController
     end
     
     session[:str] = @str
-    p "***sessionの値(タイムライン)***"
-    p session[:str]
-    # binding.prys
-    
+    p "***@strの中身***"
+    p @str
   end
   
   def client_new
