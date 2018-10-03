@@ -1,0 +1,45 @@
+/* app/assets/stylesheets/custom.scss */
+@import "bootstrap-sprockets";
+@import "honoka";
+
+/*timeline*/
+.post-panel {
+  padding: 5px 5px 5px 5px;
+  margin-bottom: 0px;
+}
+.post {
+  padding-left: 65px;
+}
+.tweet-image{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  float: left;
+  img {
+    border-radius: 50%;
+    border: 5px solid #fff;
+  }
+}
+.post-image{
+  img {
+    max-height: 250px;
+    max-width: 300px;
+  }
+}
+
+.login-section{
+  float: right;
+  margin-right: 15px;
+}
+
+/*sidebar*/
+.sidebar {
+  margin-top: 25px;
+  position: fixed;
+}
+.profile-image {
+  border-radius: 50%;
+  border: 5px solid #fff;
+  width: 100px;
+  height: 100px;
+  margin: -40px 0px 0px 10px;
+}

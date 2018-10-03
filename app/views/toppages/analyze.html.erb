@@ -1,7 +1,27 @@
-ここに検索結果
-<% @datas.each do |data|%>
-    <p><img src="<%= data[:thumbnail]%>" alt=""></p>
-    <p>タイトル:<%= data[:title]%></p>
-    <p>著者:<%= data[:authors]%></p>
-    <p>説明:<%= data[:description]%></p>
-<% end %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bookpack</title>
+    <style>
+      <!--
+       img{width:128px;
+           height:183px;
+       }     
+        --> 
+    </style>
+</head>
+<body>
+    <% @datas.each do |data|%>
+        <p> <% unless data[:thumbnail] == "NO IMAGE"%>
+                <img src="<%= data[:thumbnail]%>" alt="">
+            <% else %>
+                <img src="/noimage.png" alt="">
+            <% end%>
+        </p>
+        <p>タイトル:<%= data[:title]%></p>
+        <p>著者:<%= data[:authors]%></p>
+        <p>説明:<%= data[:description]%></p>
+    <% end %>
+</body>
+</html>

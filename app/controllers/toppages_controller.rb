@@ -87,6 +87,7 @@ class ToppagesController < ApplicationController
     @datas = []
     json['items'].each do |item|
       
+      #著者
       if item['volumeInfo'].has_key?('authors')
         authors_name = item['volumeInfo']['authors'][0]
       elsif item['volumeInfo'].has_key?('publisher')
@@ -95,12 +96,39 @@ class ToppagesController < ApplicationController
         authors_name = '不明'
       end
       
+      #タイトル
+      if item['volumeInfo'].has_key?('title')
+        title_name = item['volumeInfo']['title']
+      else
+        titile_name = '不明'
+      end
+      
+      #識別番号
+      if item['volumeInfo'].has_key?('industryIdentifiers')
+        code_name = item['volumeInfo']['industryIdentifiers'][0]['identifier']
+      else
+        code_name = '不明'
+      end
+      
+      #サムネイル
+      if item['volumeInfo'].has_key?('imageLinks')
+        thumbnail_name = item['volumeInfo']['imageLinks']['thumbnail']
+      else
+        thumbnail_name = "NO IMAGE"
+      end
+      
+      #説明
+      if item['volumeInfo'].has_key?('description')
+        description_name = item['volumeInfo']['description']
+      else
+        description_name = '説明はありません'
+      end
       data = {  
-          code: item['volumeInfo']['industryIdentifiers'][1]['identifier'] || '不明',
-          title: item['volumeInfo']['title'] || '不明',
+          code: code_name,
+          title: title_name,
           authors: authors_name,
-          thumbnail: item['volumeInfo']['imageLinks']['thumbnail'] || 'NO IMAGE',
-          description: item['volumeInfo']['description'] || '説明はありません'
+          thumbnail: thumbnail_name,
+          description: description_name
       }
       p "***dataの情報***"
       p data

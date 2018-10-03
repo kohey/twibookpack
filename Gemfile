@@ -44,6 +44,7 @@ gem 'twitter'
 gem 'settingslogic'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'honoka-rails'
+gem 'kaminari'
 
 gem 'pry-byebug', group: :development
 
