@@ -50,7 +50,7 @@ class ToppagesController < ApplicationController
     
     
     @str = ''
-    @nouns.each do |noun|
+    @nouns[0..10].each do |noun|
       noun = noun.gsub(/(@.*|http.*)/,"")
       if @str == ''
         @str = @str + noun
@@ -84,10 +84,8 @@ class ToppagesController < ApplicationController
     p result.to_s
     json = JSON.parse(result.body)
     
-    counter = 0
     @datas = []
     json['items'].each do |item|
-      counter += 1
       
       if item['volumeInfo'].has_key?('authors')
         authors_name = item['volumeInfo']['authors'][0]
@@ -97,7 +95,6 @@ class ToppagesController < ApplicationController
         authors_name = '不明'
       end
       
-      # binding.pry if counter == json['items'].length - 1
       data = {  
           code: item['volumeInfo']['industryIdentifiers'][1]['identifier'] || '不明',
           title: item['volumeInfo']['title'] || '不明',
