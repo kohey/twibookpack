@@ -5,9 +5,7 @@
     <meta charset="utf-8" />
     <title>Bookpack</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <style .twitter{
-    background-color: #55acee;
-    }></style>
+
   </head>
   <body>
     <div class="col-md-3 container sidebar well well-sm">
@@ -37,11 +35,12 @@
         
         <%= form_tag(tweet_path, method: "post") do %>
           <%= text_field_tag :text, '', class: "form-control input-area" %>
-          <%= submit_tag("Tweet", class: "twitter") %>
+          <%= button_tag sanitize('<i class="fab fa-twitter"></i>  Tweetする'), :type => "submit", :class =>"tweet"%>
+
         <% end %>
-        <%= form_tag(home_analyze_path, method: "post") do%>
-          <%= submit_tag("オススメの本", class: "btn btn-primary")%>
-        <% end %>
+        <span><%= form_tag(home_analyze_path, method: "post") do%>
+          <%= button_tag sanitize('<i class="fas fa-book-open"></i> オススメの本'), :type => "submit", :class =>"book"%>
+        <% end %></span>
     </div>
       <div class="col-md-9">
         <% @tweets.each do |tweet| %>
@@ -64,6 +63,7 @@
             </div>
           </div>
         <% end %>
+        <%= paginate @tweets %>
       </div>
   </body>
 </html>

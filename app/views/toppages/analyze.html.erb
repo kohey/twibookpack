@@ -20,7 +20,7 @@
                 <img src="/noimage.png" alt="">
             <% end%>
         </p>
-        <p>タイトル:<%= data[:title]%></p>
+        <p><%= link_to data[:title], data[:info], target: '_blank' %></p>
         <p>著者:<%= data[:authors]%></p>
         <p>説明:<%= data[:description]%></p>
     <% end %>

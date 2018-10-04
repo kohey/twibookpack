@@ -17,9 +17,7 @@ class ToppagesController < ApplicationController
   def timeline
     client = client_new
     @user = client.user
-    @tweets = client.home_timeline(include_entities: true)
-
-    
+    @tweets = Kaminari.paginate_array(client.home_timeline(include_entities: true)).page(params[:page]).per(5)
 
     p @user.tweets_count
     p client.home_timeline.count
@@ -105,6 +103,13 @@ class ToppagesController < ApplicationController
           titile_name = '不明'
         end
         
+        #リンク先
+        if item['volumeInfo'].has_key?('infoLink')
+          info_name = item['volumeInfo']['infoLink']
+        else
+          info_name = nil
+        end
+        
         #識別番号
         if item['volumeInfo'].has_key?('industryIdentifiers')
           code_name = item['volumeInfo']['industryIdentifiers'][0]['identifier']
@@ -128,6 +133,7 @@ class ToppagesController < ApplicationController
         data = {  
             code: code_name,
             title: title_name,
+            info: info_name,
             authors: authors_name,
             thumbnail: thumbnail_name,
             description: description_name
