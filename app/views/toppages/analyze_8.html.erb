@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bookpack</title>
+    <style>
+      <!--
+       img{width:128px;
+           height:183px;
+       }     
+        --> 
+    </style>
+</head>
+<body>
+      <div class="index-content">
+      <div class="container">
+            <% unless @datas == nil%>
+                  <% @datas.each do |data|%>
+                  <div class="row-eq-height">
+                  <div class="col-lg-4">
+                  <div class="card"> 
+                    <% unless data[:thumbnail] == "NO IMAGE"%>
+                        <img src="<%= data[:thumbnail]%>" alt="" class="card-img-top">
+                    <% else %>
+                        <img src="/noimage.png" alt="">
+                    <% end%>
+                    <h4><%= link_to data[:title], data[:info], target: '_blank' %></h4>
+                    <p>著者: <%= data[:authors]%></p> 
+                    <p>内容: <%= data[:description]%></p> 
+                  </div>
+                  </div>
+                  </div>
+                  <% end %>
+             <% else %>
+                 <h1>オススメの本が見つかりませんでした・・・</h1>
+                 <h2>他のボタンをお試しください！</h2>
+             <% end %>
+      </div>
+      </div>
+      
+</body>
+</html>
+

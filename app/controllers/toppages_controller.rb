@@ -46,7 +46,7 @@ class ToppagesController < ApplicationController
     p nouns
     @nouns = nouns.map { |noun| noun[:noun] }
     
-    
+    #10words
     @str = ''
     @nouns[0..10].each do |noun|
       noun = noun.gsub(/(@.*|http.*)/,"")
@@ -57,9 +57,41 @@ class ToppagesController < ApplicationController
        end
     end
     
-    session[:str] = @str
-    p "***@strの中身***"
-    p @str
+    #8words
+    @str_8 = ''
+    @nouns[0..8].each do |noun|
+      noun = noun.gsub(/(@.*|http.*)/,"")
+      if @str_8 == ''
+        @str_8 = @str_8 + noun
+      else
+        @str_8 = @str_8 + '+' + noun
+       end
+    end
+    
+    #5words
+    @str_5 = ''
+    @nouns[0..5].each do |noun|
+      noun = noun.gsub(/(@.*|http.*)/,"")
+      if @str_5 == ''
+        @str_5 = @str_5 + noun
+      else
+        @str_5 = @str_5 + '+' + noun
+       end
+    end
+    
+    session[:str_10] = @str
+    session[:str_8] = @str_8
+    session[:str_5] = @str_5
+    
+    p "***session[:str_10]の中身***"
+    p session[:str_10]
+    p "------------------"
+    p "***session[:str_8]の中身***"
+    p session[:str_8]
+    p "------------------"
+    p "***session[:str_5]の中身***"
+    p session[:str_5]
+    
   end
   
   def client_new
@@ -72,11 +104,90 @@ class ToppagesController < ApplicationController
     end
   end
   
-  def analyze
+  #10words
+  def analyze_10
+   
+    base_url = 'https://www.googleapis.com/books/v1/volumes?q='
+    keyword_10 = session[:str_10]
+    url = URI.parse(URI.encode(base_url + keyword_10))
+    p "URI結果" + url.to_s
+    result = Net::HTTP.get_response(url)
+    p result.to_s
+    json = JSON.parse(result.body)
+    
+    unless json['items'] == nil
+    
+      @datas = []
+      json['items'].each do |item|
+        
+        #著者
+        if item['volumeInfo'].has_key?('authors')
+          authors_name = item['volumeInfo']['authors'][0]
+        elsif item['volumeInfo'].has_key?('publisher')
+          authors_name = item['volumeInfo']['publisher']
+        else
+          authors_name = '不明'
+        end
+        
+        #タイトル
+        if item['volumeInfo'].has_key?('title')
+          title_name = item['volumeInfo']['title']
+        else
+          titile_name = '不明'
+        end
+        
+        #リンク先
+        if item['volumeInfo'].has_key?('infoLink')
+          info_name = item['volumeInfo']['infoLink']
+        else
+          info_name = nil
+        end
+        
+        #識別番号
+        if item['volumeInfo'].has_key?('industryIdentifiers')
+          code_name = item['volumeInfo']['industryIdentifiers'][0]['identifier']
+        else
+          code_name = '不明'
+        end
+        
+        #サムネイル
+        if item['volumeInfo'].has_key?('imageLinks')
+          thumbnail_name = item['volumeInfo']['imageLinks']['thumbnail']
+        else
+          thumbnail_name = "NO IMAGE"
+        end
+        
+        #説明
+        if item['volumeInfo'].has_key?('description')
+          description_name = item['volumeInfo']['description']
+        else
+          description_name = '説明はありません'
+        end
+        data = {  
+            code: code_name,
+            title: title_name,
+            info: info_name,
+            authors: authors_name,
+            thumbnail: thumbnail_name,
+            description: description_name
+        }
+        
+        p "***dataの情報***"
+        p data
+        @datas << data
+      end
+    
+    else
+      render 'analyze_10'
+    end
+  end
+  
+  #8words
+  def analyze_8
     
     base_url = 'https://www.googleapis.com/books/v1/volumes?q='
-    keyword = session[:str]
-    url = URI.parse(URI.encode(base_url + keyword))
+    keyword_8 = session[:str_10]
+    url = URI.parse(URI.encode(base_url + keyword_8))
     p "URI結果" + url.to_s
     result = Net::HTTP.get_response(url)
     p result.to_s
@@ -144,7 +255,85 @@ class ToppagesController < ApplicationController
       end
     
     else
-      render 'analyze'
+      render 'analyze_8'
+    end
+  end
+  
+  
+  #5words
+  def analyze_5
+    
+    base_url = 'https://www.googleapis.com/books/v1/volumes?q='
+    keyword_5 = session[:str_5]
+    url = URI.parse(URI.encode(base_url + keyword_5))
+    p "URI結果" + url.to_s
+    result = Net::HTTP.get_response(url)
+    p result.to_s
+    json = JSON.parse(result.body)
+    
+    unless json['items'] == nil
+    
+      @datas = []
+      json['items'].each do |item|
+        
+        #著者
+        if item['volumeInfo'].has_key?('authors')
+          authors_name = item['volumeInfo']['authors'][0]
+        elsif item['volumeInfo'].has_key?('publisher')
+          authors_name = item['volumeInfo']['publisher']
+        else
+          authors_name = '不明'
+        end
+        
+        #タイトル
+        if item['volumeInfo'].has_key?('title')
+          title_name = item['volumeInfo']['title']
+        else
+          titile_name = '不明'
+        end
+        
+        #リンク先
+        if item['volumeInfo'].has_key?('infoLink')
+          info_name = item['volumeInfo']['infoLink']
+        else
+          info_name = nil
+        end
+        
+        #識別番号
+        if item['volumeInfo'].has_key?('industryIdentifiers')
+          code_name = item['volumeInfo']['industryIdentifiers'][0]['identifier']
+        else
+          code_name = '不明'
+        end
+        
+        #サムネイル
+        if item['volumeInfo'].has_key?('imageLinks')
+          thumbnail_name = item['volumeInfo']['imageLinks']['thumbnail']
+        else
+          thumbnail_name = "NO IMAGE"
+        end
+        
+        #説明
+        if item['volumeInfo'].has_key?('description')
+          description_name = item['volumeInfo']['description']
+        else
+          description_name = '説明はありません'
+        end
+        data = {  
+            code: code_name,
+            title: title_name,
+            info: info_name,
+            authors: authors_name,
+            thumbnail: thumbnail_name,
+            description: description_name
+        }
+        p "***dataの情報***"
+        p data
+        @datas << data
+      end
+    
+    else
+      render 'analyze_5'
     end
   end
 end

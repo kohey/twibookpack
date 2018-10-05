@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get '/home', to: 'toppages#timeline', as: :home
   post '/home/tweet', to: 'toppages#tweet', as: :tweet
   
-  post '/home/analyze', to: 'toppages#analyze'
+  post '/home/analyze_10', to: 'toppages#analyze_10'
+  post '/home/analyze_8', to: 'toppages#analyze_8'
+  post '/home/analyze_5', to: 'toppages#analyze_5'
 end

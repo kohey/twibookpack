@@ -38,8 +38,16 @@
           <%= button_tag sanitize('<i class="fab fa-twitter"></i>  Tweetする'), :type => "submit", :class =>"tweet"%>
 
         <% end %>
-        <span><%= form_tag(home_analyze_path, method: "post") do%>
-          <%= button_tag sanitize('<i class="fas fa-book-open"></i> オススメの本'), :type => "submit", :class =>"book"%>
+        <span><%= form_tag(home_analyze_10_path, method: "post") do%>
+          <%= button_tag sanitize('<i class="fas fa-book-open"></i> オススメの本(10words)'), :type => "submit", :class =>"book"%>
+        <% end %></span>
+        
+        <span><%= form_tag(home_analyze_8_path, method: "post") do%>
+          <%= button_tag sanitize('<i class="fas fa-book-open"></i> オススメの本(8words)'), :type => "submit", :class =>"book"%>
+        <% end %></span>
+        
+        <span><%= form_tag(home_analyze_5_path, method: "post") do%>
+          <%= button_tag sanitize('<i class="fas fa-book-open"></i> オススメの本(5words)'), :type => "submit", :class =>"book"%>
         <% end %></span>
     </div>
       <div class="col-md-9">
