@@ -1,6 +1,6 @@
 /* app/assets/stylesheets/custom.scss */
 @import "bootstrap-sprockets";
-@import "honoka";
+// @import "honoka";
 
 /*timeline*/
 .post-panel {
@@ -45,14 +45,25 @@
 }
 
 .tweet{
-  background-color: #55acee;
+  background-color: #A9E2F3;
+  transition: background-color .2s;
   margin-top:10px;
+}
+
+.tweet:hover{
+  background-color: #A9D0F5;
 }
 
 .book{
   background-color: #f5deb3;
+  transition: background-color .2s;
   margin-top: 10px;
 }
+
+.book:hover{
+  background-color:#deb887;
+}
+
 
 // 検索結果
 
@@ -115,9 +126,31 @@
   }
 }
 
-.row-eq-height {
-    display: flex;
-    flex-wrap: wrap;
+p.item-title {
+    // 文の行数を2行に保ち、最後に... を追加するスタイル
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+.recommend{
+  text-align: center;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
+.back{
+  text-align:center;
+}
+
+//トップページ
+
+.home{
+  background: image-url('/top.jpg')
+}
+
+.top-message{
+  margin-top: 250px;
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
 

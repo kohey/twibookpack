@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bookpack</title>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+<body class="<%= controller.controller_name%>">
+    
+    <h1 class="top-message">アナタだけの特別な本との出会いを<h1>
+    
+    
+     <% if current_user %>
+        <%= form_tag(logout_path, method: "get") do %>
+          <%= button_tag sanitize('<i class="fab fa-twitter"></i>  ログアウト'), :type => "submit", :class =>"tweet"%>
+        <% end %>
+     
+     <% else %>  
+        
+        <%= form_tag('/auth/twitter', method: "get") do %>
+          <%= button_tag sanitize('<i class="fab fa-twitter"></i>  ログイン'), :type => "submit", :class =>"tweet"%>
+        <% end %>
+        
+    <% end %>    
+
+</body>
+</html>
