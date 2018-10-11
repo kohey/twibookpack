@@ -130,9 +130,25 @@ p.item-title {
     // 文の行数を2行に保ち、最後に... を追加するスタイル
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     overflow: hidden;
   }
+  
+.card-img-top{
+  height: 200px;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.parent{
+  height:200px;
+  width:auto;
+}
+
+.panel-out{
+  max-height: 330px;
+}
 
 .recommend{
   text-align: center;

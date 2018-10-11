@@ -3,13 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Bookpack</title>
-    <style>
-      <!--
-       img{width:128px;
-           height:183px;
-       }     
-        --> 
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
       <h1 class="recommend">アナタにオススメの本</h1>
@@ -20,9 +14,9 @@
       <div class="container">
             <% unless @datas == nil%>
                   <% @datas.each do |data|%>
-                  <div class="col-md-3 col-sm-4 col-xs-12">
+                  <div class="col-md-3 col-sm-4 col-xs-12 panel-out">
                   <div class="panel panel-default">
-                        <div class="panel-heading text-center">
+                        <div class="panel-heading text-center parent">
                           <% unless data[:thumbnail] == "NO IMAGE"%>
                             <img src="<%= data[:thumbnail]%>" alt="" class="card-img-top">
                           <% else %>

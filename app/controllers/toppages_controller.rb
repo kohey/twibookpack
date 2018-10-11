@@ -9,9 +9,14 @@ class ToppagesController < ApplicationController
   
 
   def tweet
-    client = client_new
-    client.update(params[:text])
-    redirect_to home_path
+    if(params[:text] == '')
+      flash[:danger] = '新規Tweetが空です'
+      render './layouts/_flash_messages.html.erb'
+    else
+      client = client_new
+      client.update(params[:text])
+      redirect_to home_path
+    end
   end
 
   def timeline
