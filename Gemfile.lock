@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    amazon-ecs (2.5.0)
+      nokogiri (~> 1.4)
+      ruby-hmac (~> 0.3)
     arel (7.1.4)
     bindex (0.5.0)
     buftok (0.2.0)
@@ -172,6 +175,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    ruby-hmac (0.4.0)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -234,6 +238,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazon-ecs
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails
@@ -265,4 +270,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.5
+   2.0.1

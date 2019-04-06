@@ -6,6 +6,14 @@ class ToppagesController < ApplicationController
   require 'open-uri'
   require 'net/http'
   require 'json'
+
+  Amazon::Ecs.configure do |options|
+    options[:AWS_access_key_id] = ENV['AWS_access_key']
+    options[:AWS_secret_key] = ENV['AWS_secret_key']
+    options[:associate_tag] = ENV['AWS_associate_tag']
+  end
+
+  Amazon::Ecs::debug = true
   
 
   def tweet
