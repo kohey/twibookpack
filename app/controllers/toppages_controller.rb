@@ -7,7 +7,6 @@ class ToppagesController < ApplicationController
   require 'net/http'
   require 'json'
 
-  #amazonのリクエストは、売り上げ少ないと、使い物にならない
   # Amazon::Ecs.configure do |options|
   #   options[:AWS_access_key_id] = ENV['AWS_access_key']
   #   options[:AWS_secret_key] = ENV['AWS_secret_key']
@@ -15,7 +14,7 @@ class ToppagesController < ApplicationController
   # end
   #
   # Amazon::Ecs::debug = true
-  
+  #
 
   def tweet
     if(params[:text] == '')
@@ -203,20 +202,6 @@ class ToppagesController < ApplicationController
     else
       render 'analyze_10'
     end
-
-    #amazonapiは、売り上げ多くないと、使い物にならない
-    # @books = []
-    # session[:nouns].each do |noun|
-    #   sleep(10)
-    #   books = Amazon::Ecs.item_search(
-    #     noun,
-    #     search_index:  'Books',
-    #     dataType: 'script',
-    #     response_group: 'ItemAttributes, Images',
-    #     country:  'jp'
-    #   )
-    #   @books << books
-    # end
 
   end
   

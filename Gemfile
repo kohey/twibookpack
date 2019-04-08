@@ -49,6 +49,9 @@ gem 'kaminari'
 #for amazon api
 gem 'amazon-ecs'
 
+#vueの環境用
+gem 'webpacker', github: 'rails/webpacker'
+
 #cookieじゃ耐えられないので、activerecordへ
 # gem 'activerecord-session_store'
 
