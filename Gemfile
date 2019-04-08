@@ -49,6 +49,9 @@ gem 'kaminari'
 #for amazon api
 gem 'amazon-ecs'
 
+#cookieじゃ耐えられないので、activerecordへ
+# gem 'activerecord-session_store'
+
 gem 'pry-byebug', group: :development
 
 # Use Capistrano for deployment

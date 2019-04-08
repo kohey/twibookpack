@@ -7,13 +7,14 @@ class ToppagesController < ApplicationController
   require 'net/http'
   require 'json'
 
-  Amazon::Ecs.configure do |options|
-    options[:AWS_access_key_id] = ENV['AWS_access_key']
-    options[:AWS_secret_key] = ENV['AWS_secret_key']
-    options[:associate_tag] = ENV['AWS_associate_tag']
-  end
-
-  Amazon::Ecs::debug = true
+  #amazonのリクエストは、売り上げ少ないと、使い物にならない
+  # Amazon::Ecs.configure do |options|
+  #   options[:AWS_access_key_id] = ENV['AWS_access_key']
+  #   options[:AWS_secret_key] = ENV['AWS_secret_key']
+  #   options[:associate_tag] = ENV['AWS_associate_tag']
+  # end
+  #
+  # Amazon::Ecs::debug = true
   
 
   def tweet
@@ -57,9 +58,18 @@ class ToppagesController < ApplicationController
     nouns = parser.parse.nouns
     p "***nounsの中身***"
     p nouns
-    @nouns = nouns.map { |noun| noun[:noun] }
-    
-    #10words
+
+    #cookieがセッションオーバーしないように、取り出す個数を制限
+    nouns_limit = []
+    for i in 0..9 do
+      nouns_limit << nouns[i]
+    end
+
+    @nouns = nouns_limit.map { |noun| noun[:noun] }
+
+    session[:nouns] = @nouns
+
+    # 10words
     @str = ''
     @nouns[0..10].each do |noun|
       noun = noun.gsub(/(@.*|http.*)/,"")
@@ -69,7 +79,7 @@ class ToppagesController < ApplicationController
         @str = @str + '+' + noun
        end
     end
-    
+
     #8words
     @str_8 = ''
     @nouns[0..8].each do |noun|
@@ -80,7 +90,7 @@ class ToppagesController < ApplicationController
         @str_8 = @str_8 + '+' + noun
        end
     end
-    
+
     #5words
     @str_5 = ''
     @nouns[0..5].each do |noun|
@@ -127,12 +137,12 @@ class ToppagesController < ApplicationController
     result = Net::HTTP.get_response(url)
     p result.to_s
     json = JSON.parse(result.body)
-    
+
     unless json['items'] == nil
-    
+
       @datas = []
       json['items'].each do |item|
-        
+
         #著者
         if item['volumeInfo'].has_key?('authors')
           authors_name = item['volumeInfo']['authors'][0]
@@ -141,42 +151,42 @@ class ToppagesController < ApplicationController
         else
           authors_name = '不明'
         end
-        
+
         #タイトル
         if item['volumeInfo'].has_key?('title')
           title_name = item['volumeInfo']['title']
         else
           titile_name = '不明'
         end
-        
+
         #リンク先
         if item['volumeInfo'].has_key?('infoLink')
           info_name = item['volumeInfo']['infoLink']
         else
           info_name = nil
         end
-        
+
         #識別番号
         if item['volumeInfo'].has_key?('industryIdentifiers')
           code_name = item['volumeInfo']['industryIdentifiers'][0]['identifier']
         else
           code_name = '不明'
         end
-        
+
         #サムネイル
         if item['volumeInfo'].has_key?('imageLinks')
           thumbnail_name = item['volumeInfo']['imageLinks']['thumbnail']
         else
           thumbnail_name = "NO IMAGE"
         end
-        
+
         #説明
         if item['volumeInfo'].has_key?('description')
           description_name = item['volumeInfo']['description']
         else
           description_name = '説明はありません'
         end
-        data = {  
+        data = {
             code: code_name,
             title: title_name,
             info: info_name,
@@ -184,15 +194,30 @@ class ToppagesController < ApplicationController
             thumbnail: thumbnail_name,
             description: description_name
         }
-        
+
         p "***dataの情報***"
         p data
         @datas << data
       end
-    
+
     else
       render 'analyze_10'
     end
+
+    #amazonapiは、売り上げ多くないと、使い物にならない
+    # @books = []
+    # session[:nouns].each do |noun|
+    #   sleep(10)
+    #   books = Amazon::Ecs.item_search(
+    #     noun,
+    #     search_index:  'Books',
+    #     dataType: 'script',
+    #     response_group: 'ItemAttributes, Images',
+    #     country:  'jp'
+    #   )
+    #   @books << books
+    # end
+
   end
   
   #8words
