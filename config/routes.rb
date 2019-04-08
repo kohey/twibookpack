@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post '/home/analyze_10', to: 'toppages#analyze_10'
   post '/home/analyze_8', to: 'toppages#analyze_8'
   post '/home/analyze_5', to: 'toppages#analyze_5'
+
 end

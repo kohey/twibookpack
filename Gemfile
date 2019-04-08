@@ -46,6 +46,15 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'honoka-rails'
 gem 'kaminari'
 
+#for amazon api
+gem 'amazon-ecs'
+
+#vueの環境用
+gem 'webpacker', github: 'rails/webpacker'
+
+#cookieじゃ耐えられないので、activerecordへ
+# gem 'activerecord-session_store'
+
 gem 'pry-byebug', group: :development
 
 # Use Capistrano for deployment
