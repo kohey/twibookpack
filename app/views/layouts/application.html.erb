@@ -15,30 +15,37 @@
   <body>
   
     <header>
-  <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Bookpack</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-               <li><%= link_to 'ログアウト', logout_path %></li>
-           <% else %>
-               <li><%= link_to 'ログイン', '/auth/twitter' %></li>
-           <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      <!--  <nav class="navbar navbar-inverse navbar-static-top">-->
+      <!--    <div class="container">-->
+      <!--      <div class="navbar-header">-->
+      <!--        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
+      <!--          <span class="sr-only">Toggle navigation</span>-->
+      <!--          <span class="icon-bar"></span>-->
+      <!--          <span class="icon-bar"></span>-->
+      <!--          <span class="icon-bar"></span>-->
+      <!--        </button>-->
+      <!--        <a class="navbar-brand" href="/">Bookpack</a>-->
+      <!--      </div>-->
+      <!--      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+      <!--        <ul class="nav navbar-nav navbar-right">-->
+      <%# if current_user %>
+      <!--               <li><%#= link_to 'ログアウト', logout_path %></li>-->
+      <%# else %>
+      <!--               <li><%#= link_to 'ログイン', '/auth/twitter' %></li>-->
+      <%# end %>
+      <!--        </ul>-->
+      <!--      </div>-->
+      <!--    </div>-->
+<!--      </nav>-->
+
+      <script src="https://unpkg.com/vue-navigation-bar@1.0.0/dist/vue-navigation-bar.min.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-navigation-bar@1.0.0/dist/vue-navigation-bar.css">
+      <script src="https://unpkg.com/tippy.js/dist/tippy.all.min.js"></script>
 </header>
-      
+    <div id="app">
+      <%= javascript_pack_tag 'hello_vue' %>
+    </div>
     <%= yield %>
   </body>
 </html>

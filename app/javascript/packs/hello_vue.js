@@ -8,12 +8,37 @@
 import Vue from 'vue'
 import App from '../app.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
-  console.log(app)
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '/' },
+    { path: '/about' },
+    { path: '/locations' },
+    { path: '/blog' },
+    { path: '/pricing' },
+    { path: '/pricing/pro' },
+    { path: '/pricing/starter' },
+    { path: '/contact' },
+    { path: '/customer-service' },
+    { path: '/accounting' },
+    { path: '/reception' },
+    { path: '/signup' },
+    { path: '/login' },
+  ]
 })
+
+import VueNavigationBar from '../src/index.js'
+Vue.component('vue-navigation-bar', VueNavigationBar)
+
+new Vue({
+  el: '#app',
+  router,
+  render: h => h(App)
+})
+
 
 
 
