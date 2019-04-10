@@ -162,7 +162,8 @@ p.item-title {
 //トップページ
 
 .home{
-  background: image-url('/top.jpg')
+  background: image-url('/top.jpg');
+  background-repeat: no-repeat;
 }
 
 .top-message{

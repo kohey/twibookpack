@@ -25,7 +25,7 @@
 <script>
 
 import VueScreenSize from 'vue-screen-size'
-import uuidV4 from './common/uuidv4'
+import uuidv4 from './common/uuidv4'
 import BrandImage from './components/BrandImage.vue'
 import MenuOptions from './components/MenuOptions.vue'
 import CollapseButton from './components/CollapseButton.vue'
@@ -48,7 +48,7 @@ export default {
     computed: {
         finalOptions () {
             return {
-                elementId: (this.options.elementId) ? this.options.elementId : uuidV4(),
+                elementId: (this.options.elementId) ? this.options.elementId : uuidv4(),
                 isUsingVueRouter: (this.options.isUsingVueRouter) ? true : false,
                 mobileBreakpoint: (this.options.mobileBreakpoint) ? this.options.mobileBreakpoint : 992,
                 brandImagePath: (this.options.brandImagePath) ? this.options.brandImagePath : '/',
