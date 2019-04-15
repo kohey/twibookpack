@@ -18,6 +18,7 @@ const router = new VueRouter({
     { path: '/about' },
     { path: '/locations' },
     { path: '/blog' },
+    { path: '/twitter' },
     { path: '/pricing' },
     { path: '/pricing/pro' },
     { path: '/pricing/starter' },
@@ -28,6 +29,7 @@ const router = new VueRouter({
     { path: '/signup' },
     { path: '/login' },
   ]
+
 })
 
 import VueNavigationBar from '../src/index.js'
