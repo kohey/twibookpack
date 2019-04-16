@@ -15,20 +15,21 @@
     <div class="container py-4">
       <div class="row justify-content-center">
         <div class="col-lg-12 text-center">
-          <h1><strong>Bookpack</strong></h1>
+          <h1 class="top-title"><strong>Bookpack</strong></h1>
         </div>
       </div>
     </div>
 
 
 
-    <div class="container py-2">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <hr>
-        </div>
-      </div>
-    </div>
+    <!--<div class="container py-2">-->
+      <!--<div class="row justify-content-center">-->
+        <!--<div class="col-lg-10">-->
+          <!--<hr>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <hr>
 
 
 
@@ -135,15 +136,15 @@
 
   body {
     margin: 0;
-    height: 100%;
-    height: 100vh;
+    /*height: 100%;*/
+    /*height: 100vh;*/
     width: 100%;
     font-family: 'Montserrat', sans-serif;
   }
 
   #app {
-    height: 100%;
-    height: 100vh;
+    /*height: 100%;*/
+    /*height: 100vh;*/
     width: 100%;
     line-height: 1.5;
   }

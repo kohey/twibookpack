@@ -1,6 +1,8 @@
 /* app/assets/stylesheets/custom.scss */
 @import "bootstrap-sprockets";
 // @import "honoka";
+//particle用
+@import url('https://fonts.googleapis.com/css?family=Merienda');
 
 /*timeline*/
 .post-panel {
@@ -45,13 +47,15 @@
 }
 
 .tweet{
-  background-color: #A9E2F3;
+  background-color: #61A6FC;
   transition: background-color .2s;
   margin-top:10px;
+  border-radius: 6px;
+
 }
 
 .tweet:hover{
-  background-color: #A9D0F5;
+  background-color: #0062CC;
 }
 
 .book{
@@ -159,15 +163,55 @@ p.item-title {
   text-align:center;
 }
 
+
+
+
+
+
+
+
+
+
 //トップページ
 
 .home{
-  background: image-url('/top.jpg');
-  background-repeat: no-repeat;
+  //background: image-url('/top.jpg');
+  //background-repeat: no-repeat;
+
 }
 
+hr{
+  margin-top: 0px !important;
+  margin-bottom: 5px !important;
+}
 .top-message{
   margin-top: 250px;
   font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+
+body {
+  font-family: 'Merienda', cursive;
+}
+
+h1 .top-title{
+  font-size: xx-large;
+}
+.container-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('/beach.jpg') center center;
+  height: 100vh;
+  background-size: cover;
+}
+.box {
+  background: rgba(255,255,255,.7);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+a {
+  color: #0bd;
 }
 
