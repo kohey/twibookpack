@@ -5,7 +5,25 @@
     <title>Bookpack</title>
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script type="text/javascript" src="./delighters.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <%= javascript_include_tag 'delighters.js' %>
+
+    <script>
+      $(function(){
+        // #で始まるリンクをクリックしたら実行されます
+        $('a[href^="#"]').click(function() {
+          // スクロールの速度
+          var speed = 700; // ミリ秒で記述
+          var href= $(this).attr("href");
+          var target = $(href == "#" || href == "" ? 'html' : href);
+          var position = target.offset().top;
+          $('body,html').animate({scrollTop:position}, speed, 'swing');
+          return false;
+        });
+      });
+    </script>
 </head>
 <body class="<%= controller.controller_name%>">
 
@@ -28,7 +46,32 @@
     </div>
 
     <section id="section1" class="demo">
-      <a href="#section2"><span></span></a>
+      <a href="#container-2"><span></span></a>
     </section>
+
+    <div id="container-2">
+       <h1 class="featuretitle">Features</h1>
+       <ul class="featurelist">
+        <li class="feature" data-delighter>Easy To Use To Everybody(Three Clicks) </li>
+        <li class="feature" data-delighter>Best For Those Who Love Books</li>
+        <li class="feature" data-delighter>Best For Those Who Love Twitter</li>
+       </ul>
+    </div>
+
+    <section id="#section2" class="demo">
+      <a href="#section3"><span></span></a>
+    </section>
+
+
+    <div id="section3" class="demo">
+       <h1 class="featuretitle">contact</h1>
+       <ul class="featurelist">
+        <li class="feature" data-delighter>test1 </li>
+        <li class="feature" data-delighter>test2</li>
+        <li class="feature" data-delighter>test3</li>
+       </ul>
+    </div>
+
+
 </body>
 </html>

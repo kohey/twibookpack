@@ -2,7 +2,7 @@
 @import "bootstrap-sprockets";
 // @import "honoka";
 //particle用
-@import url('https://fonts.googleapis.com/css?family=Merienda');
+@import url("https://fonts.googleapis.com/css?family=Merienda");
 
 /*timeline*/
 .post-panel {
@@ -12,7 +12,7 @@
 .post {
   padding-left: 65px;
 }
-.tweet-image{
+.tweet-image {
   margin-top: 5px;
   margin-bottom: 5px;
   float: left;
@@ -21,14 +21,14 @@
     border: 5px solid #fff;
   }
 }
-.post-image{
+.post-image {
   img {
     max-height: 250px;
     max-width: 300px;
   }
 }
 
-.login-section{
+.login-section {
   float: right;
   margin-right: 15px;
 }
@@ -46,28 +46,26 @@
   margin: -40px 0px 0px 10px;
 }
 
-.tweet{
-  background-color: #61A6FC;
-  transition: background-color .2s;
-  margin-top:10px;
+.tweet {
+  background-color: #61a6fc;
+  transition: background-color 0.2s;
+  margin-top: 10px;
   border-radius: 6px;
-
 }
 
-.tweet:hover{
-  background-color: #0062CC;
+.tweet:hover {
+  background-color: #0062cc;
 }
 
-.book{
+.book {
   background-color: #f5deb3;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   margin-top: 10px;
 }
 
-.book:hover{
-  background-color:#deb887;
+.book:hover {
+  background-color: #deb887;
 }
-
 
 // 検索結果
 
@@ -85,12 +83,13 @@
 }
 
 .index-content .card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 .index-content .card img {
@@ -114,7 +113,7 @@
   /* For Safari 3.1 to 6.0 */
   transition: background-color 1s, color 1s;
   min-height: 20px;
-  background-color: #002E5B;
+  background-color: #002e5b;
   color: #ffffff;
   border-radius: 4px;
   text-align: center;
@@ -131,82 +130,74 @@
 }
 
 p.item-title {
-    // 文の行数を2行に保ち、最後に... を追加するスタイル
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-  }
-  
-.card-img-top{
+  // 文の行数を2行に保ち、最後に... を追加するスタイル
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.card-img-top {
   height: 200px;
   width: auto;
   max-height: 100%;
   max-width: 100%;
 }
 
-.parent{
-  height:200px;
-  width:auto;
+.parent {
+  height: 200px;
+  width: auto;
 }
 
-.panel-out{
+.panel-out {
   max-height: 330px;
 }
 
-.recommend{
+.recommend {
   text-align: center;
-  font-family: 'Sawarabi Mincho', sans-serif;
+  font-family: "Sawarabi Mincho", sans-serif;
 }
 
-.back{
-  text-align:center;
+.back {
+  text-align: center;
 }
-
-
-
-
-
-
-
-
-
 
 //トップページ
 
-.home{
+.home {
   //background: image-url('/top.jpg');
   //background-repeat: no-repeat;
-
+}
+ul {
+  list-style: none;
 }
 
-hr{
+hr {
   margin-top: 0px !important;
   margin-bottom: 5px !important;
 }
-.top-message{
+.top-message {
   margin-top: 250px;
-  font-family: 'Sawarabi Mincho', sans-serif;
+  font-family: "Sawarabi Mincho", sans-serif;
 }
-
 
 body {
-  font-family: 'Merienda', cursive;
+  font-family: "Merienda", cursive;
 }
 
-h1 .top-title{
+h1 .top-title {
   font-size: xx-large;
 }
 .container-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('/beach.jpg') center center;
+  background: url("/beach.jpg") center center;
   height: 100vh;
   background-size: cover;
 }
 .box {
-  background: rgba(255,255,255,.7);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
   padding: 20px;
   text-align: center;
@@ -215,25 +206,26 @@ a {
   color: #0bd;
 }
 
-
 //delinger.js
 
-.box.delighter {
-  transition: all .3s ease-out;
+.feature {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.feature.delighter {
+  transition: all 0.5s ease-out;
   transform: translateX(-100%);
   opacity: 0;
 }
 
-.box.delighter.started {
+.feature.delighter.started {
   transform: none;
   opacity: 1;
 }
 
-.box.delighter.started.ended {
-  border: solid red 10px;
+.feature.delighter.started.ended {
+  // border: solid red 10px;
 }
-
-
 
 //スクロールボタン
 .demo a {
@@ -245,13 +237,13 @@ a {
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
   color: #fff;
-  font : normal 400 20px/1 'Josefin Sans', sans-serif;
-  letter-spacing: .1em;
+  font: normal 400 20px/1 "Josefin Sans", sans-serif;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 .demo a:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 #section1 a {
   padding-top: 60px;
@@ -271,7 +263,7 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
-  content: '';
+  content: "";
   width: 16px;
   height: 16px;
   margin: -12px 0 0 -8px;
@@ -286,10 +278,10 @@ a {
   top: 0;
   left: 0;
   z-index: -1;
-  content: '';
+  content: "";
   width: 44px;
   height: 44px;
-  box-shadow: 0 0 0 0 rgba(0,191,255,.1);
+  box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.1);
   border-radius: 100%;
   opacity: 0;
   -webkit-animation: sdb03 3s infinite;
@@ -304,7 +296,7 @@ a {
     opacity: 1;
   }
   60% {
-    box-shadow: 0 0 0 60px rgba(0,191,255,.1);
+    box-shadow: 0 0 0 60px rgba(0, 191, 255, 0.1);
     opacity: 0;
   }
   100% {
@@ -319,7 +311,7 @@ a {
     opacity: 1;
   }
   60% {
-    box-shadow: 0 0 0 60px rgba(0,191,255,.1);
+    box-shadow: 0 0 0 60px rgba(0, 191, 255, 0.1);
     opacity: 0;
   }
   100% {
@@ -327,3 +319,100 @@ a {
   }
 }
 
+//ここからsection2
+
+#container-2 {
+  background-color: #4dc6e6;
+  height: 400px;
+  width: 100%;
+}
+
+#container-2 h1 {
+  text-align: center;
+}
+
+.featuretitle {
+  font-size: 4em;
+}
+.featurelist {
+  margin-top: 50px;
+}
+
+.feature {
+  text-align: center;
+  font-size: xx-large;
+}
+
+#section2 a {
+  padding-top: 60px;
+}
+#section2 a span {
+  position: absolute;
+  top: 0;
+  //left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #000000;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+#section2 a span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px;
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+#section2 a span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  content: "";
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.1);
+  border-radius: 100%;
+  opacity: 0;
+  -webkit-animation: sdb03 3s infinite;
+  animation: sdb03 3s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb03 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(0, 191, 255, 0.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb03 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(0, 191, 255, 0.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
